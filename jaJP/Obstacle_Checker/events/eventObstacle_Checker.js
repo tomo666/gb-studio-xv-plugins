@@ -107,9 +107,9 @@ export const compile = (input, helpers) => {
       //console.log("Y is Number: " + typeY[0].value);
     } else if(typeY[0].type === "variable") {
       // It was a variable, so we push to stack as variable
-      //const variableAlias = getVariableAlias(typeY[0].value);
+      const variableAlias = getVariableAlias(typeY[0].value);
       _stackPush(variableAlias);
-      console.log("Y is Variable: " + typeY[0].value + " = " + variableAlias);
+      //console.log("Y is Variable: " + typeY[0].value + " = " + variableAlias);
     } else {
       //console.log("Not supported type for Y. Must be a number or a variable.");
       _stackPop(1); // We already have value X pushed in stack, so remove it here
