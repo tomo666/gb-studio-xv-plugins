@@ -1,7 +1,6 @@
 /*
  * Author: Tomo (@indiegdevstdio)
  * Given the tile position (X,Y), checks if there's any obstacles (collisions or actors) at that position
- * License: MIT Licence
  */
 const scriptValueHelpers = require("shared/lib/scriptValue/helpers");
 
@@ -75,7 +74,8 @@ const fields = [].concat(
 export const compile = (input, helpers) => {
   console.log(input);
   const { x, y, results} = input;
-  const { _stackPush, getVariableAlias, _stackPushConst, _callNative, _stackPop, variableSetToScriptValue, variableSetToValue, _stackPushReference } = helpers;
+  const { _stackPush, getVariableAlias, _stackPushConst, _callNative, _stackPop, appendRaw,
+    variableSetToScriptValue, variableSetToValue, _stackPushReference } = helpers;
     const { precompileScriptValue, optimiseScriptValue } = scriptValueHelpers;
 
     // Get & push the value for tile X
@@ -85,14 +85,14 @@ export const compile = (input, helpers) => {
     if(typeX[0].type === "number") {
       // It was a number, so we push to stack as constant
       _stackPushConst(typeX[0].value);
-      console.log("X is Number: " + typeX[0].value);
+      //console.log("X is Number: " + typeX[0].value);
     } else if(typeX[0].type === "variable") {
       // It was a variable, so we push to stack as variable
       const variableAlias = getVariableAlias(typeX[0].value);
       _stackPush(variableAlias);
-      console.log("X is Variable: " + typeX[0].value + " = " + variableAlias);
+      //console.log("X is Variable: " + typeX[0].value + " = " + variableAlias);
     } else {
-      console.log("Not supported type for X. Must be a number or a variable.");
+      //console.log("Not supported type for X. Must be a number or a variable.");
       return;
     }
 
@@ -104,28 +104,27 @@ export const compile = (input, helpers) => {
     if(typeY[0].type === "number") {
       // It was a number, so we push to stack as constant
       _stackPushConst(typeY[0].value);
-      console.log("Y is Number: " + typeY[0].value);
+      //console.log("Y is Number: " + typeY[0].value);
     } else if(typeY[0].type === "variable") {
       // It was a variable, so we push to stack as variable
-      const variableAlias = getVariableAlias(typeY[0].value);
+      //const variableAlias = getVariableAlias(typeY[0].value);
       _stackPush(variableAlias);
       console.log("Y is Variable: " + typeY[0].value + " = " + variableAlias);
     } else {
-      console.log("Not supported type for Y. Must be a number or a variable.");
+      //console.log("Not supported type for Y. Must be a number or a variable.");
       _stackPop(1); // We already have value X pushed in stack, so remove it here
       return;
     }
 
-    // Get & push the index for variable results
+    // Get & push the reference for variable results
     const [resultsVar] = precompileScriptValue(optimiseScriptValue(results));
-    console.log(precompileScriptValue(optimiseScriptValue(results)));
-    console.log("REF VAR: " + resultsVar[0]);
-    _stackPushReference(resultsVar[0]);
+    appendRaw(`VM_PUSH_REFERENCE ${getVariableAlias(resultsVar[0])}`);
 
     // Call native function on engine side
     _callNative("ObstacleChecker");
     // Remove pushed values from stack
-    _stackPop(3);
+    _stackPop(2);
+    appendRaw(`VM_POP 1`);
 };
 
 module.exports = {

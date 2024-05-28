@@ -1,7 +1,6 @@
 /*
  * Author: Tomo (@indiegdevstdio)
  * Given the tile position (X,Y), checks if there's any obstacles (collisions or actors) at that position
- * License: MIT Licence
  */
 #pragma bank 255
 
