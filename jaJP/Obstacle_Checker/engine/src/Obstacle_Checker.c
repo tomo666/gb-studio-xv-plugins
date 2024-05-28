@@ -10,7 +10,7 @@
 #include "collision.h"
 #include "actor.h"
 
-void WalkabilityChecker(SCRIPT_CTX * THIS) OLDCALL BANKED {
+void ObstacleChecker(SCRIPT_CTX * THIS) OLDCALL BANKED {
     // Variable index is passed (in ARG0) for result storage, so now we can assign the results back to this variable
     int16_t* results = VM_REF_TO_PTR(*(int16_t *)VM_REF_TO_PTR(FN_ARG0));
 
@@ -28,8 +28,8 @@ void WalkabilityChecker(SCRIPT_CTX * THIS) OLDCALL BANKED {
 
     // Map collision check passed, so now we will check if any actor's are there
     actor_t* actor = actor_at_tile(x, y, 1);
-    // Ignore pinned actors
-    if(!actor->pinned && actor != NULL) {
+    // Ignore pinned actors and player it self
+    if(!actor->pinned && actor != NULL && actor != &PLAYER) {
         // Can't walk through because there's an actor
         *results = 0;
         return;

@@ -5,8 +5,8 @@
  */
 const scriptValueHelpers = require("shared/lib/scriptValue/helpers");
 
-export const id = "RQ_GBS_KIT_TILE_MAP_COLLISION_DETECT";
-export const name = "通行可能チェック";
+export const id = "XV_TILE_MAP_OBSTACLE_CHECK";
+export const name = "特定のタイルの障害物をチェックする";
 export const groups = ["XV プラグイン"];
 
 const fields = [].concat(
@@ -14,9 +14,7 @@ const fields = [].concat(
     type: "group",
     fields: [
       {
-        key: "results",
-        label: "結果を保存する変数",
-        description: "コリジョン情報を保存する変数",
+        label: "特定のタイル（X,Y）が通行可能かどうかをチェックします。指定したタイル上にアクターが存在せず、かつコリジョンが無い場合は、通行可能タイルとしてみなされます。「結果を保存する変数」には: 障害物なし=0、障害物あり=1 の値が入ります。",
         type: "label",
       },
     ],
@@ -125,7 +123,7 @@ export const compile = (input, helpers) => {
     _stackPushReference(resultsVar[0]);
 
     // Call native function on engine side
-    _callNative("WalkabilityChecker");
+    _callNative("ObstacleChecker");
     // Remove pushed values from stack
     _stackPop(3);
 };
