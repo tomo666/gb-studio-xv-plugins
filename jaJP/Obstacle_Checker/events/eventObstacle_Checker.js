@@ -72,7 +72,7 @@ const fields = [].concat(
 );
 
 export const compile = (input, helpers) => {
-  console.log(input);
+  //console.log(input);
   const { x, y, results} = input;
   const { _stackPush, getVariableAlias, _stackPushConst, _callNative, _stackPop, appendRaw,
     variableSetToScriptValue, variableSetToValue, _stackPushReference } = helpers;
@@ -80,7 +80,7 @@ export const compile = (input, helpers) => {
 
     // Get & push the value for tile X
     const [typeX] = precompileScriptValue(optimiseScriptValue(x));
-    console.log(precompileScriptValue(optimiseScriptValue(x)));
+    //console.log(precompileScriptValue(optimiseScriptValue(x)));
     // Check if the passed tile X value is a number or variable
     if(typeX[0].type === "number") {
       // It was a number, so we push to stack as constant
@@ -98,7 +98,7 @@ export const compile = (input, helpers) => {
 
     // Get & push the value for tile Y
     const [typeY] = precompileScriptValue(optimiseScriptValue(y));
-    console.log(precompileScriptValue(optimiseScriptValue(y)));
+    //console.log(precompileScriptValue(optimiseScriptValue(y)));
 
     // Check if the passed tile Y value is a number or variable
     if(typeY[0].type === "number") {
