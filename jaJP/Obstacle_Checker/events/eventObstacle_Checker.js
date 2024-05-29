@@ -118,13 +118,13 @@ export const compile = (input, helpers) => {
 
     // Get & push the reference for variable results
     const [resultsVar] = precompileScriptValue(optimiseScriptValue(results));
-    appendRaw(`VM_PUSH_REFERENCE ${getVariableAlias(resultsVar[0])}`);
-
+    _stackPushReference(getVariableAlias(resultsVar[0]));
+    
     // Call native function on engine side
     _callNative("ObstacleChecker");
     // Remove pushed values from stack
-    _stackPop(2);
-    appendRaw(`VM_POP 1`);
+    _stackPop(3);
+    
 };
 
 module.exports = {
