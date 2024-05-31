@@ -9,7 +9,7 @@
 #include "collision.h"
 #include "actor.h"
 
-BYTE get_collision_object_id_at_tile(UBYTE x, UBYTE y, UBYTE is_include_player) NONBANKED {
+BYTE get_collision_object_id_at_tile(UBYTE x, UBYTE y, UBYTE is_include_player) BANKED {
     // Get the collision ID at the specified tile position
     UBYTE collisionID = tile_at(x, y);
     if(collisionID != 0) {
