@@ -4,7 +4,7 @@
  */
 const scriptValueHelpers = require("shared/lib/scriptValue/helpers");
 
-export const id = "XV_SPRITE_TILE_REPLACE";
+export const id = "XV_SPRITE_TILE_REPLACER";
 export const name = "指定のスプライトタイルを置き換える";
 export const groups = ["XV プラグイン"];
 
@@ -146,7 +146,7 @@ export const compile = (input, helpers) => {
     `);
 
   // Call native function on engine side
-  _callNative("SetupSpriteTileReplace");
+  _callNative("SetupSpriteTileReplacer");
 
   // Remove pushed values from stack
   appendRaw(`

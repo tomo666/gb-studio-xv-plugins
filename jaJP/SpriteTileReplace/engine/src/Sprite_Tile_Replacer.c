@@ -8,7 +8,7 @@
 #include "vm.h"
 #include "actor.h"
 
-void SpriteTileReplace(SCRIPT_CTX * THIS, UBYTE actor_id, UBYTE target_tile, UBYTE tileset_bank, const tileset_t * tileset, UBYTE start_tile, UBYTE vram_bank) BANKED {
+void SpriteTileReplacer(SCRIPT_CTX * THIS, UBYTE actor_id, UBYTE target_tile, UBYTE tileset_bank, const tileset_t * tileset, UBYTE start_tile, UBYTE vram_bank) BANKED {
 	vm_set_const(THIS, FN_ARG0, actor_id);
 	UBYTE * n_actor = VM_REF_TO_PTR(FN_ARG0);
 	actor_t * actor = actors + *n_actor;
@@ -17,12 +17,12 @@ void SpriteTileReplace(SCRIPT_CTX * THIS, UBYTE actor_id, UBYTE target_tile, UBY
 	VBK_REG = 0;
 }
 
-void SetupSpriteTileReplace(SCRIPT_CTX * THIS) OLDCALL BANKED {
+void SetupSpriteTileReplacer(SCRIPT_CTX * THIS) OLDCALL BANKED {
 	tileset_t* tileset = *(tileset_t**)VM_REF_TO_PTR(FN_ARG0);
 	uint8_t tileset_bank = *(uint8_t*)VM_REF_TO_PTR(FN_ARG1);
 	UBYTE target_tile_idx = *(uint8_t*)VM_REF_TO_PTR(FN_ARG2);
 	UBYTE source_tile_idx = *(uint8_t*)VM_REF_TO_PTR(FN_ARG3);
 	UBYTE vram_bank = *(uint8_t*)VM_REF_TO_PTR(FN_ARG4);
 	UBYTE actor_id = *(uint8_t*)VM_REF_TO_PTR(FN_ARG5);
-	SpriteTileReplace(THIS, actor_id, target_tile_idx, tileset_bank, tileset, source_tile_idx, vram_bank);
+	SpriteTileReplacer(THIS, actor_id, target_tile_idx, tileset_bank, tileset, source_tile_idx, vram_bank);
 }
