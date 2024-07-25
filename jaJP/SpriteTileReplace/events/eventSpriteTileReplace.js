@@ -155,38 +155,6 @@ export const compile = (input, helpers) => {
 
   // Remove pushed values from stack
   _stackPop(4);
-
-
-  /*
-  // Get & push the value for enemy group ID
-  const [typeEnemyGroupID] = precompileScriptValue(optimiseScriptValue(enemyGroupID));
-  // Check if the passed value is a number or variable
-  if (typeEnemyGroupID[0].type === "number") {
-    // It was a number, so we push to stack as constant
-    _stackPushConst(typeEnemyGroupID[0].value);
-  } else if (typeEnemyGroupID[0].type === "variable") {
-    // It was a variable, so we push to stack as variable
-    const variableAlias = getVariableAlias(typeEnemyGroupID[0].value);
-    _stackPush(variableAlias);
-  }
-
-  // Push actor index to stack
-  actorPushById(actor_A);
-  actorPushById(actor_B);
-  actorPushById(actor_Damage_Point);
-  actorPushById(actor_Effects);
-  actorPushById(actor_Party_Effect);
-  actorPushById(actor_Enemy_Effect);
-
-  // Get & push the reference for variable results
-  const [resultsVar] = precompileScriptValue(optimiseScriptValue(results));
-  _stackPushReference(getVariableAlias(resultsVar[0]));
-
-  // Call native function on engine side
-  _callNative("XVBattleSystem_Init1");
-  // Remove pushed values from stack
-  _stackPop(8);
-  */
 };
 
 module.exports = {
