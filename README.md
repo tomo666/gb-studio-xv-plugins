@@ -49,7 +49,8 @@ GB Studio プロジェクトフォルダの「plugins」フォルダに jaJP の
 
   最大 16 個のグローバル変数を統合して 1 次元配列のように扱うことができます。さらに個々のグローバル変数を、指定したビット数に分割することで、格納できる値の最大値を犠牲にする代わりに、より多くの配列を扱えるようになります。この分割設定は [各配列要素のビットサイズ] プロパティで指定できます。分割した場合の配列の要素数の上限は次の通りです。<1 ビット> = 256、<2 ビット> = 128、<4 ビット> = 64、<8 ビット> = 32、<16 ビット> = 16。
 
-  ![array_manager_set_event](https://github.com/user-attachments/assets/ca6c1b2a-2148-4038-9432-f56c109e368c)
+  ![array_manager_set_event](https://github.com/user-attachments/assets/b342fadc-9f76-4da7-bda9-4d02363977aa)
+
 
   <dl>
   <dt>グローバル変数 1 〜 16</dt>
@@ -94,7 +95,7 @@ GB Studio プロジェクトフォルダの「plugins」フォルダに jaJP の
 
   Array_Manager_Set プラグインで仮想グローバル変数の各配列要素に代入した値を取得します。
   
-  ![array_manager_get_event](https://github.com/user-attachments/assets/95f17383-0d95-4c70-8606-2e1fdefb211c)
+  ![array_manager_get_event](https://github.com/user-attachments/assets/6ebf6446-8883-403b-a2e2-b6f3e4a67cb8)
 
   <dl>
   <dt>グローバル変数 1 〜 16</dt>
@@ -111,6 +112,15 @@ GB Studio プロジェクトフォルダの「plugins」フォルダに jaJP の
 
   ___
   **（GB Studio v4.0.1）カスタムイベントとして扱う場合の注意点**
+
+  GBS 4.0.1 のカスタムスクリプトは変数の参照渡しにバグがあるようなので、値を指定した変数（参照渡しとして）に代入されないことがあります。
+  この場合、回避策として同カスタムイベントのスクリプト内に、参照渡しではないダミー変数を用意して、ダミー変数の中に一度プラグインからの返り値を入れます。その後、実際に値を代入したい参照渡しとして指定した変数にダミー変数から改めて代入します。
+
+  （例）
+
+
+  ![gbs401_cs_reference_issue_workaround](https://github.com/user-attachments/assets/faa52519-e743-44dd-9486-0fc3ed317b7c)
+
   
 ---
 ***Obstacle_Checker*** `[衝突判定用プラグイン集]`
