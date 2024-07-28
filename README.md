@@ -144,8 +144,8 @@ ___
 ***Sprite_Tile_Replacer*** `[Replaces a specified sprite tile with ability to select a VRAM bank]`
 
   Replaces a sprite tile with another tileset tile. Basic functionality is same as the GBVM command: VM_ACTOR_REPLACE_TILE. However, in GB Studio up to version 4.0.1, Color Only mode does not allow you to access extended VRAM bank. This plugin will allow you to specify which VRAM bank to reference.
-
-  ![sprite_tiles_replace_plugin_event_enUS](https://github.com/user-attachments/assets/ad595118-bb2f-41e3-9ce5-8ec7208ff247)
+  
+  ![sprite_tiles_replace_plugin_event_enUS](https://github.com/user-attachments/assets/a858a90f-04be-4ed1-80d2-29c26518cc24)
 
   <dl>
   <dt>Actor</dt>
@@ -171,7 +171,7 @@ ___
 
   Sprite tiles are scattered elsewhere in somewhat random position inside the VRAM bank(s). First you will need to check which tile index is the one to be replaced. One way of doing this is to create an event like the one below (using this plugin!) and replacing all sprite tiles with a tile image with numberings on it (placeholder tiles).
   
-  ![generate_placeholder_tiles_enUS](https://github.com/user-attachments/assets/8b0ab52d-c1b5-4271-9028-c8171838d7fd)
+  ![generate_placeholder_tiles_enUS](https://github.com/user-attachments/assets/9024aaa1-1872-40c2-8802-12a1a1f75cc0)
 
   Then, once you run the scene, you will see the sprite being replaced with these placeholder tiles which makes it more visible which index to be used as the replacement tile. 
   Note that if the [Flip ‘Right’ To Create ‘Left’ Facing Frames] is checked in the Sprite Editor, the placeholder tiles will be flipped as well.  
@@ -181,4 +181,4 @@ ___
   The placeholder tiles can be found as a sample inside this plugin for you to use if needed.
   
   ![Number_Tiles_vram0](https://github.com/user-attachments/assets/7c995253-0f39-4c28-9d1f-62b2ec3cb3ad)
-![Number_Tiles_vram1](https://github.com/user-attachments/assets/8050849f-af5d-4aac-a8cd-963ece7dd773)
+  ![Number_Tiles_vram1](https://github.com/user-attachments/assets/8050849f-af5d-4aac-a8cd-963ece7dd773)
