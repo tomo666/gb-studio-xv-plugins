@@ -128,7 +128,8 @@ ___
 
   Checks for any obstacle (collisions or other actors) found relative to the specified actor's position and facing direction,  given the offset tile amount to walk relatively towards the destination. If there are no collisions or other actors, it means there are no obstacles, and 0 will be assigned to the specified return variable. Otherwise, this plugin will return the obstacle ID information. Example: No obstacle = 0, Obstacle found = Collision ID, or the actor ID represented with a negative value (Note that if the obstacle was a Player actor, the returned ID will be -128). If a map collision ID is found, the actor/player ID will be ignored. * Only 8x8 tile size is supported.
 
-  ![actor_walkability_checker](https://github.com/user-attachments/assets/3e9047c7-851e-4afc-8534-1fdd778b5e97)
+  
+  ![actor_walkability_checker_enUS](https://github.com/user-attachments/assets/ac982703-ab66-478d-b2ed-4859b270d701)
 
 ---
   
@@ -136,7 +137,7 @@ ___
 
   Given the tile position (X,Y), checks if there are any obstacles (collisions or actors) on that tile. If there are no collisions or other actors on the tile, 0 will be assigned to the specified return variable. Otherwise, this plugin will return the obstacle ID information. Example: No obstacle = 0, Obstacle found = Collision ID, or the actor ID represented with a negative value (Note that if the obstacle was a Player actor, the returned ID will be -128). If a map collision ID is found, the actor/player ID will be ignored. * Only 8x8 tile size is supported.
 
-  ![obstacle_checker](https://github.com/user-attachments/assets/acdb7f39-8023-4e32-ad93-7669a49aefff)
+  ![obstacle_checker_enUS](https://github.com/user-attachments/assets/53873049-8f98-4c42-a564-dc320dceaf4b)
 
 ---
 
@@ -144,15 +145,16 @@ ___
 
   Replaces a sprite tile with another tileset tile. Basic functionality is same as the GBVM command: VM_ACTOR_REPLACE_TILE. However, in GB Studio up to version 4.0.1, Color Only mode does not allow you to access extended VRAM bank. This plugin will allow you to specify which VRAM bank to reference.
 
-  ![sprite_tiles_replace_plugin_event](https://github.com/user-attachments/assets/86c5d6a6-7970-4433-b330-bafeb2b08653)
+  ![sprite_tiles_replace_plugin_event_enUS](https://github.com/user-attachments/assets/ad595118-bb2f-41e3-9ce5-8ec7208ff247)
 
-    <dl>
+  <dl>
   <dt>Actor</dt>
   <dd>The actor in which you want to replace the sprite’s tile.</dd>
   <dt>VRAM Bank</dt>
   <dd>
-    The bank you want to reference. 0 = Bank 0, 1 = Bank 1. ![vram_banks_explained](https://github.com/user-attachments/assets/b96ea501-889b-43a9-91f1-4d82c9115780)
-    
+  The bank you want to reference. 0 = Bank 0, 1 = Bank 1.
+
+  ![vram_banks_explained_enUS](https://github.com/user-attachments/assets/bab8353a-71ee-42ca-8454-d3aec1e07170)
   </dd>
   <dt>Tile Bank</dt>
   <dd>The source tile bank reference to use for replacing.</dd>
@@ -169,7 +171,7 @@ ___
 
   Sprite tiles are scattered elsewhere in somewhat random position inside the VRAM bank(s). First you will need to check which tile index is the one to be replaced. One way of doing this is to create an event like the one below (using this plugin!) and replacing all sprite tiles with a tile image with numberings on it (placeholder tiles).
   
-  ![generate_placeholder_tiles](https://github.com/user-attachments/assets/202725fb-9261-4752-8fcc-70c21e99e692)
+  ![generate_placeholder_tiles_enUS](https://github.com/user-attachments/assets/8b0ab52d-c1b5-4271-9028-c8171838d7fd)
 
   Then, once you run the scene, you will see the sprite being replaced with these placeholder tiles which makes it more visible which index to be used as the replacement tile. 
   Note that if the [Flip ‘Right’ To Create ‘Left’ Facing Frames] is checked in the Sprite Editor, the placeholder tiles will be flipped as well.  
