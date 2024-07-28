@@ -1,6 +1,6 @@
 # gb-studio-xv-plugins
 
-[日本語版はこちら](README_jaJP.md)
+## [日本語版はこちら (Japanese version link)](README_jaJP.md)
 
 Experimental GB Studio 4 plugin collections
 
@@ -18,7 +18,7 @@ No need for credits, but if you would like to do so, please use: Tomo@indiegdevs
   - Array_Manager_Get `[Merges multiple global variables and use it as a virtual array (GET VALUE)]`
 - Obstacle_Checker `[Collision Detection Plugin Collections]`
   - Actor_Walkability_Checker `[Obtains an obstacle info relative to the actor's facing direction]`
-  - Obstacle_Checker `[Obtains an obstacle info at the specified tile position]`
+  - Obstacle_Checker `[Obtains an obstacle info at a specific tile position]`
 - Sprite_Tile_Replacer `[Replaces a specified sprite tile with ability to select a VRAM bank]`
 
 ---
@@ -30,7 +30,7 @@ Download the plugin from this repository: [Code] > [Download ZIP], and unzip the
 ![download_from_github](https://github.com/user-attachments/assets/6e3d38ac-03a1-4402-ac57-90d59e8e522b)
 
 
-Under “plugins” located inside your GB Studio project folder, copy the plugins that you wish to use.
+Under “plugins” located inside your GB Studio project folder, copy the plugins inside the "enUS" folder that you wish to use.
 
 * Note that the plugins folder should be directly placed in your GB Studio project folder and not in the “assets” folder.
 
@@ -38,8 +38,8 @@ Under “plugins” located inside your GB Studio project folder, copy the plugi
 
 Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 
-![adding_plugin_events](https://github.com/user-attachments/assets/efd9f8f9-25b7-4d8b-b14e-651dd1d53da4 "イベントの追加")
-![add_events_sample](https://github.com/user-attachments/assets/818cf8a2-8d61-4acd-a7c7-df8bf8de87e6)
+![adding_plugin_event_enUS](https://github.com/user-attachments/assets/8f75d7ab-8bd1-4695-aca4-1c670e6519fa)
+![add_events_sample_enUS](https://github.com/user-attachments/assets/70bf7898-ade7-4533-b9e6-a55d99fa3b9e)
 ---
 
 ## Description
@@ -50,21 +50,28 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 
   Merges a maximum of 16 global variables and creates a virtual 1-dimentional array. Also, individual global variables can be divided into smaller segments which allows more array elements to be used, by sacrificing the storage amount that can be used in each array element. This array division settings can be configured in the [Individual Array Element Bit Size] property. The maximum amount an array element can store according to the bit size is as follows. <1 bit> = 256, <2 bit> = 128, <4 bit> = 64, <8 bit> = 32, <16 bit> = 16.
 
-  ![array_manager_set_event](https://github.com/user-attachments/assets/b342fadc-9f76-4da7-bda9-4d02363977aa)
+  ![array_manager_set_event_enUS](https://github.com/user-attachments/assets/704d7fa7-7223-4483-b712-e397b47eb44f)
 
 
-  <dl>
+<dl>
 <dt>Global Variables 1 - 16</dt>
 <dd>
-  Specify the global variables that will be merged. 
-  Merged global variables are now trated as a single “Virtual Global Variable”. A Virtual Global Variable is assigned with index numbers, so for example if you want to access global variable 3, you can acces it like an array <Virtual Global Variable[2]><仮想グローバル変数[2]> (Note: Index numbers begin with 0). ![array_manager_virtual_array_concept](https://github.com/user-attachments/assets/383fdd0a-0a6a-47fc-81c5-0edaea915d34)
+  Specify the global variables that will be merged. Merged global variables are now trated as a single “Virtual Global Variable”. A Virtual Global Variable is assigned with index numbers, so for example if you want to access global variable 3, you can acces it like an array <Virtual Global Variable[2]> (Note: Index numbers begin with 0).
+
+  ![array_manager_virtual_array_concept_enUS](https://github.com/user-attachments/assets/2b5e4a68-461a-4a32-9499-09ae92b52863)
+    
 </dd>
 <dt>Number of Global Variables to Use</dt>
 <dd>
   From the global variables set, specify the number of global variables to be merged (counting from top). In the screenshot example above, if “2” is specified, global variables 1 and 2 will be used and others will be ignored. If the default value 16 is specified, all global variables set will be merged.
 </dd>
 <dt>Individual Array Element Bit Size</dt>
-<dd>To use more arrays, you can divide individual global variables with the bit size you want. GB Studio’s global variable has 16 bit size each, so you can divide up the bit size in the range of 1, 2, 4, 8, 16. For example, if “2” bit is specified, each global variables will be divided into 8 segments (having 2 bit worth of storage per segment). If “8” bit is specified, each global variables will be divided into 2 segments (having 8 bit each per segment). If global variable is divided in the [Individual Array Element Bit Size] property as “8” bit or “16” bit, negative values can be used for each element. The minimum and maximum values that can be used per array element is as follows. <1 bit> = 0 - 1, <2 bit> = 0 - 3, <4 bit> = 0 - 15, <8 bit> = -128 - 127, <16 bit> = -32,768 - 32,767.
+<dd>To use more arrays, you can divide individual global variables with the bit size you want. GB Studio’s global variable has 16 bit size each, so you can divide up the bit size in the range of 1, 2, 4, 8, 16. For example, if “2” bit is specified, each global variables will be divided into 8 segments (having 2 bit worth of storage per segment). If “8” bit is specified, each global variables will be divided into 2 segments (having 8 bit each per segment).
+  
+  ![Array_Manager_bit_divide_enUS](https://github.com/user-attachments/assets/833a7961-fe7f-4cbe-bef7-e83cf492a6f6)
+
+  
+  If global variable is divided in the [Individual Array Element Bit Size] property as “8” bit or “16” bit, negative values can be used for each element. The minimum and maximum values that can be used per array element is as follows. <1 bit> = 0 - 1, <2 bit> = 0 - 3, <4 bit> = 0 - 15, <8 bit> = -128 - 127, <16 bit> = -32,768 - 32,767.
 </dd>
 <dt>Array Index</dt>
 <dd>Specify the index in the Virtual Global Variable to be manipulated on. For example, if you merged 16 global variables divided by 1 bit segment, you can address indexes between 0 and 255.</dd>
@@ -72,17 +79,25 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 <dd>The value (number or variable) to be stored into the specified array index.</dd>
 </dl>
 
-**Example of 16 global variables merged**| Individual Array Element Bit Size | Array Size | Min - Max value ||:-----------|:------------:|:------------:|| 1 | 256 |0〜1|| 2 | 128 |0〜3|| 4 | 64 |0〜15|| 8 | 32 |-128〜127|| 16 | 16 |-32,768〜32,767|
+**Example of 16 global variables merged**
+
+| Individual Array Element Bit Size | Array Size | Min - Max value |
+|:-----------|:------------:|:------------:|
+| 1 | 256 |0〜1|
+| 2 | 128 |0〜3|
+| 4 | 64 |0〜15|
+| 8 | 32 |-128〜127|
+| 16 | 16 |-32,768〜32,767|
 
 ---
 
 - Array_Manager_Get `[Merges multiple global variables and use it as a virtual array (GET VALUE)]`
 
-  Obtains a value from the Virtual Global Variable that was set with the Array_Manager_Set plugin.
+  Obtains a value from the array index of Virtual Global Variable that was set with the Array_Manager_Set plugin.
   
-  ![array_manager_get_event](https://github.com/user-attachments/assets/6ebf6446-8883-403b-a2e2-b6f3e4a67cb8)
+  ![array_manager_get_event_enUS](https://github.com/user-attachments/assets/c703a3a1-181e-4e62-9a00-367ef125576d)
 
-  <dl>
+<dl>
 <dt>Global Variables 1 - 16</dt>
 <dd>Specify the global variables that you want to merge. This should be same as the global variables set in Array_Manager_Set.</dd>
 <dt>Number of Global Variables to Use</dt>
@@ -94,17 +109,17 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 <dt>Get Value Storage Variable</dt>
 <dd>The variable to store the obtained value.</dd>
 </dl>
-  ___
-  **(GB Studio v4.0.1) Notes when using the plugins inside custome events.**
 
-  GBS 4.0.1 seems to have an issue of storing values into variable that are passed By Ref. When a variable is set as By Ref and tried to assign it with a value via a plugin, the value is not assigned and sets to 0. 
-  When you assign a value directly to the referenced variable using only custom event scripts, this issue does not happen. So, the current workaround is to add an extra variable assignment script inside the custom event script before assigning to the By Ref var.
+___
+
+**(GB Studio v4.0.1) Notes when using the plugins inside custome events.**
+
+  GBS 4.0.1 seems to have an issue of storing values into variable that are passed By Ref. When a variable is set as By Ref and tried to assign it with a value via a plugin, the value is not assigned and sets to 0. When you assign a value directly to the referenced variable using only custom event scripts, this issue does not happen. So, the current workaround is to add an extra variable assignment script inside the custom event script before assigning to the By Ref var.
 
   Example
 
-
-  ![gbs401_cs_reference_issue_workaround](https://github.com/user-attachments/assets/faa52519-e743-44dd-9486-0fc3ed317b7c)
-
+  
+  ![gbs401_cs_reference_issue_workaround_enUS](https://github.com/user-attachments/assets/2930e173-d973-4a23-aa93-08751af33663)
 
 ---
 ***Obstacle_Checker*** `[Collision Detection Plugin Collections]`
@@ -144,7 +159,7 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
   <dt>Tileset</dt>
   <dd>The source tileset reference to use for replacing.</dd>
   <dt>Background Tile Index</dt>
-  <dd>The background tile index in the source tileset to use.</dd>
+  <dd>The background tile index in the source tileset to replace with.</dd>
   <dt>Sprite Tile Index</dt>
   <dd>The sprite’s tile index to be replaced by the background tile.</dd>
   </dl>
