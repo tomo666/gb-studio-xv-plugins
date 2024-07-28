@@ -24,7 +24,7 @@ const fields = [].concat(
       {
         key: "actor",
         type: "actor",
-        label: "アクター",
+        label: "Actor",
         description: "The actor in which you want to replace the sprite’s tile.",
         defaultValue: "$self$",
         width: "70%",
