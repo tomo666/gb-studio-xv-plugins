@@ -1,4 +1,7 @@
 # gb-studio-xv-plugins
+
+[日本語版はこちら](README_jaJP.md)
+
 Experimental GB Studio 4 plugin collections
 
 ## Overview
@@ -10,13 +13,13 @@ Can be used in commercial or non-commercial purposes. However, these plugins are
 No need for credits, but if you would like to do so, please use: Tomo@indiegdevstdio or just Tomo.
 
 ## Contents
-- Array_Factory `[仮想配列操作用プラグイン集]`
-  - Array_Manager_Set `[複数のグローバル変数を統合させて配列として扱う（配列への値を代入）]`
-  - Array_Manager_Get `[複数のグローバル変数を統合させて配列として扱う（配列からの値を取得）]`
-- Obstacle_Checker `[衝突判定用プラグイン集]`
-  - Actor_Walkability_Checker `[アクターの進行方向の障害物を取得する]`
-  - Obstacle_Checker `[タイルの障害物の情報を取得する]`
-- Sprite_Tile_Replacer `[指定のスプライトタイルを置き換える（VRAM バンク切り替え可能）]`
+- Array_Factory `[Virtual Array Management Plugin Collections]`
+  - Array_Manager_Set `[Merges multiple global variables and use it as a virtual array (SET VALUE)]`
+  - Array_Manager_Get `[Merges multiple global variables and use it as a virtual array (GET VALUE)]`
+- Obstacle_Checker `[Collision Detection Plugin Collections]`
+  - Actor_Walkability_Checker `[Obtains an obstacle info relative to the actor's facing direction]`
+  - Obstacle_Checker `[Obtains an obstacle info at the specified tile position]`
+- Sprite_Tile_Replacer `[Replaces a specified sprite tile with ability to select a VRAM bank]`
 
 ---
 
@@ -41,9 +44,9 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 
 ## Description
 
-***Array_Factory*** `[仮想配列操作用プラグイン集]`
+***Array_Factory*** `[Virtual Array Management Plugin Collections]`
 
-- Array_Manager_Set `[複数のグローバル変数を統合させて配列として扱う（配列への値を代入）]`
+- Array_Manager_Set `[Merges multiple global variables and use it as a virtual array (SET VALUE)]`
 
   Merges a maximum of 16 global variables and creates a virtual 1-dimentional array. Also, individual global variables can be divided into smaller segments which allows more array elements to be used, by sacrificing the storage amount that can be used in each array element. This array division settings can be configured in the [Individual Array Element Bit Size] property. The maximum amount an array element can store according to the bit size is as follows. <1 bit> = 256, <2 bit> = 128, <4 bit> = 64, <8 bit> = 32, <16 bit> = 16.
 
@@ -73,7 +76,7 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 
 ---
 
-- Array_Manager_Get `[複数のグローバル変数を統合させて配列として扱う（配列からの値を取得）]`
+- Array_Manager_Get `[Merges multiple global variables and use it as a virtual array (GET VALUE)]`
 
   Obtains a value from the Virtual Global Variable that was set with the Array_Manager_Set plugin.
   
@@ -104,9 +107,9 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 
 
 ---
-***Obstacle_Checker*** `[衝突判定用プラグイン集]`
+***Obstacle_Checker*** `[Collision Detection Plugin Collections]`
 
-- Actor_Walkability_Checker `[アクターの進行方向の障害物を取得する]`
+- Actor_Walkability_Checker `[Obtains an obstacle info relative to the actor's facing direction]`
 
   Checks for any obstacle (collisions or other actors) found relative to the specified actor's position and facing direction,  given the offset tile amount to walk relatively towards the destination. If there are no collisions or other actors, it means there are no obstacles, and 0 will be assigned to the specified return variable. Otherwise, this plugin will return the obstacle ID information. Example: No obstacle = 0, Obstacle found = Collision ID, or the actor ID represented with a negative value (Note that if the obstacle was a Player actor, the returned ID will be -128). If a map collision ID is found, the actor/player ID will be ignored. * Only 8x8 tile size is supported.
 
@@ -114,7 +117,7 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 
 ---
   
-- Obstacle_Checker `[タイルの障害物の情報を取得する]`
+- Obstacle_Checker `[Obtains an obstacle info at the specified tile position]`
 
   Given the tile position (X,Y), checks if there are any obstacles (collisions or actors) on that tile. If there are no collisions or other actors on the tile, 0 will be assigned to the specified return variable. Otherwise, this plugin will return the obstacle ID information. Example: No obstacle = 0, Obstacle found = Collision ID, or the actor ID represented with a negative value (Note that if the obstacle was a Player actor, the returned ID will be -128). If a map collision ID is found, the actor/player ID will be ignored. * Only 8x8 tile size is supported.
 
@@ -122,7 +125,7 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 
 ---
 
-***Sprite_Tile_Replacer*** `[指定のスプライトタイルを置き換える（VRAM バンク切り替え可能）]`
+***Sprite_Tile_Replacer*** `[Replaces a specified sprite tile with ability to select a VRAM bank]`
 
   Replaces a sprite tile with another tileset tile. Basic functionality is same as the GBVM command: VM_ACTOR_REPLACE_TILE. However, in GB Studio up to version 4.0.1, Color Only mode does not allow you to access extended VRAM bank. This plugin will allow you to specify which VRAM bank to reference.
 
