@@ -48,7 +48,7 @@ Locate the plugin under [Add Event] > [XV Plugins] and add the event.
 
 - Array_Manager_Set `[Merges multiple global variables and use it as a virtual array (SET VALUE)]`
 
-  Merges a maximum of 16 global variables and creates a virtual 1-dimentional array. Also, individual global variables can be divided into smaller segments which allows more array elements to be used, by sacrificing the storage amount that can be used in each array element. This array division settings can be configured in the [Individual Array Element Bit Size] property. The maximum amount an array element can store according to the bit size is as follows. <1 bit> = 256, <2 bit> = 128, <4 bit> = 64, <8 bit> = 32, <16 bit> = 16.
+  Merges a maximum of 16 global variables and creates a virtual 1-dimentional array. Also, individual global variables can be divided into smaller segments which allows more array elements to be used, by sacrificing the storage amount that can be used in each array element. This array division settings can be configured in the [Individual Array Element Bit Size] property. The maximum array size according to the bit size is as follows. <1 bit> = 256, <2 bit> = 128, <4 bit> = 64, <8 bit> = 32, <16 bit> = 16.
 
   ![array_manager_set_event_enUS](https://github.com/user-attachments/assets/704d7fa7-7223-4483-b712-e397b47eb44f)
 
