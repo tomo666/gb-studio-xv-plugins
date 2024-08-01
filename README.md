@@ -16,7 +16,7 @@ No need for credits, but if you would like to do so, please use: Tomo@indiegdevs
 - Array_Factory `[Virtual Array Management Plugin Collections]`
   - Array_Manager_Set `[Merges multiple global variables and use it as a virtual array (SET VALUE)]`
   - Array_Manager_Get `[Merges multiple global variables and use it as a virtual array (GET VALUE)]`
-- Obstacle_Checker `[Collision Detection Plugin Collections]`
+- Obstacle_Detector `[Collision Detection Plugin Collections]`
   - Actor_Walkability_Checker `[Obtains an obstacle info relative to the actor's facing direction]`
   - Obstacle_Checker `[Obtains an obstacle info at a specific tile position]`
 - Sprite_Tile_Replacer `[Replaces a specified sprite tile with ability to select a VRAM bank]`
@@ -122,7 +122,7 @@ ___
   ![gbs401_cs_reference_issue_workaround_enUS](https://github.com/user-attachments/assets/2930e173-d973-4a23-aa93-08751af33663)
 
 ---
-***Obstacle_Checker*** `[Collision Detection Plugin Collections]`
+***Obstacle_Detector*** `[Collision Detection Plugin Collections]`
 
 - Actor_Walkability_Checker `[Obtains an obstacle info relative to the actor's facing direction]`
 
