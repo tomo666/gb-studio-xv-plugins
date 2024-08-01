@@ -13,7 +13,7 @@ GB Studio で開発中のゲーム「XV」の副産物です。現行バージ�
 - Array_Factory `[仮想配列操作用プラグイン集]`
   - Array_Manager_Set `[複数のグローバル変数を統合させて配列として扱う（配列への値を代入）]`
   - Array_Manager_Get `[複数のグローバル変数を統合させて配列として扱う（配列からの値を取得）]`
-- Obstacle_Checker `[衝突判定用プラグイン集]`
+- Obstacle_Detector `[衝突判定用プラグイン集]`
   - Actor_Walkability_Checker `[アクターの進行方向の障害物を取得する]`
   - Obstacle_Checker `[タイルの障害物の情報を取得する]`
 - Sprite_Tile_Replacer `[指定のスプライトタイルを置き換える（VRAM バンク切り替え可能）]`
@@ -123,7 +123,7 @@ GB Studio プロジェクトフォルダの「plugins」フォルダに jaJP の
 
   
 ---
-***Obstacle_Checker*** `[衝突判定用プラグイン集]`
+***Obstacle_Detector*** `[衝突判定用プラグイン集]`
 
 - Actor_Walkability_Checker `[アクターの進行方向の障害物を取得する]`
 
