@@ -10,8 +10,23 @@ export const name = "配列マネージャー（値の代入）";
 export const groups = ["XV プラグイン"];
 
 const fields = [].concat(
+  [
+    {
+      key: "array_manager_set_tabs",
+      type: "tabs",
+      defaultValue: "tabSetupArray",
+      values: {
+        tabSetValue: "値の代入",
+        tabSetupArray: "配列のセットアップ",
+      },
+    },
+  ],
+  [{}],
+
+  // Setup Variables Tab
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         label: "最大 16 個のグローバル変数を統合して 1 次元配列のように扱うことができます。さらに個々のグローバル変数を指定したビット数に分割することで、格納できる値を犠牲にする代わりに、より多くの配列数を扱えるようになります。この分割設定は [各配列要素のビットサイズ] プロパティで指定できます。分割した場合の配列の要素数の上限は次の通りです。<1 ビット> = 256、<2 ビット> = 128、<4 ビット> = 64、<8 ビット> = 32、<16 ビット> = 16。",
@@ -21,6 +36,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var1",
@@ -42,6 +58,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var3",
@@ -63,6 +80,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var5",
@@ -84,6 +102,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var7",
@@ -105,6 +124,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var9",
@@ -126,6 +146,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var11",
@@ -147,6 +168,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var13",
@@ -168,6 +190,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var15",
@@ -189,6 +212,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         label: "[各配列要素のビットサイズ] で変数を分割した場合、8 ビットと 16 ビットで分割した場合のみ、マイナス値が使用できます。また、分割した場合に使用できる各変数（配列要素）の最小・最大値は次の通りです。<1 ビット> = 0〜1、<2 ビット> = 0〜3、<4 ビット> = 0〜15、<8 ビット> = -128〜127、<16 ビット> = -32,768〜32,767。",
@@ -198,6 +222,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "number_of_vars_to_use",
@@ -226,8 +251,11 @@ const fields = [].concat(
       },
     ],
   }],
+
+  // Set Value Tab
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetValue"]}],
     fields: [
       {
         key: "array_index",

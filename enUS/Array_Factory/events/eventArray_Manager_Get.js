@@ -10,8 +10,23 @@ export const name = "Array Manager (Get Value)";
 export const groups = ["XV Plugins"];
 
 const fields = [].concat(
+  [
+    {
+      key: "array_manager_get_tabs",
+      type: "tabs",
+      defaultValue: "tabSetupArray",
+      values: {
+        tabGetValue: "Get Value",
+        tabSetupArray: "Setup Array",
+      },
+    },
+  ],
+  [{}],
+
+  // Setup Variables Tab
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         label: "Obtains a value from the array index of Virtual Global Variable that was set with the Array_Manager_Set plugin.",
@@ -21,6 +36,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var1",
@@ -42,6 +58,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var3",
@@ -63,6 +80,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var5",
@@ -84,6 +102,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var7",
@@ -105,6 +124,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var9",
@@ -126,6 +146,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var11",
@@ -147,6 +168,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var13",
@@ -168,6 +190,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var15",
@@ -189,6 +212,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "number_of_vars_to_use",
@@ -217,8 +241,11 @@ const fields = [].concat(
       },
     ],
   }],
+
+  // Get Value Tab
   [{
     type: "group",
+    conditions: [{key: "array_manager_get_tabs", in: ["tabGetValue"]}],
     fields: [
       {
         key: "array_index",

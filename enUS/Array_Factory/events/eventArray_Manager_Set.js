@@ -9,9 +9,25 @@ export const id = "XV_ARRAY_MANAGER_SET";
 export const name = "Array Manager (Set Value)";
 export const groups = ["XV Plugins"];
 
+
 const fields = [].concat(
+  [
+    {
+      key: "array_manager_set_tabs",
+      type: "tabs",
+      defaultValue: "tabSetupArray",
+      values: {
+        tabSetValue: "Set Value",
+        tabSetupArray: "Setup Array",
+      },
+    },
+  ],
+  [{}],
+
+  // Setup Variables Tab
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         label: "Merges a maximum of 16 global variables and creates a virtual 1-dimentional array. Also, individual global variables can be divided into smaller segments which allows more array elements to be used, by sacrificing the storage amount that can be used in each array element. The maximum amount an array element can store according to the bit size is as follows. <1 bit> = 256, <2 bit> = 128, <4 bit> = 64, <8 bit> = 32, <16 bit> = 16.",
@@ -21,6 +37,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var1",
@@ -42,6 +59,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var3",
@@ -63,6 +81,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var5",
@@ -84,6 +103,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var7",
@@ -105,6 +125,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var9",
@@ -126,6 +147,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var11",
@@ -147,6 +169,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var13",
@@ -168,6 +191,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "var15",
@@ -187,8 +211,10 @@ const fields = [].concat(
       },
     ],
   }],
+
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         label: "If global variable is divided in the [Individual Array Element Bit Size] property as 8 bit or 16 bit, negative values can be used for each element. The minimum and maximum values that can be used per array element is as follows: <1 bit> = 0 - 1, <2 bit> = 0 - 3, <4 bit> = 0 - 15, <8 bit> = -128 - 127, <16 bit> = -32,768 - 32,767.",
@@ -198,6 +224,7 @@ const fields = [].concat(
   }],
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
         key: "number_of_vars_to_use",
@@ -226,8 +253,11 @@ const fields = [].concat(
       },
     ],
   }],
+
+  // Set Value Tab
   [{
     type: "group",
+    conditions: [{key: "array_manager_set_tabs", in: ["tabSetValue"]}],
     fields: [
       {
         key: "array_index",
