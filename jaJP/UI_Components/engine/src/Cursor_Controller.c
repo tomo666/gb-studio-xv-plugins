@@ -79,10 +79,10 @@ BYTE prevCursorIndex = -1;
 BYTE cursorIndex = -1;
 
 // Changes actor state
-void ChangeActorState(SCRIPT_CTX * THIS, UBYTE actor_id, UWORD state, UBYTE state_id) BANKED {
+void ChangeActorState(SCRIPT_CTX * THIS, UBYTE actor_id, UWORD state, UBYTE state_id, UBYTE is_reset_frames) BANKED {
 	vm_set_const(THIS, FN_ARG0, actor_id);
 	vm_actor_set_anim_set(THIS, FN_ARG0, state);
-    actor_set_frame_offset((actor_t*)(actors + actor_id), 0);
+    if(is_reset_frames) actor_set_frame_offset((actor_t*)(actors + actor_id), 0);
     currentAnimStateID = state_id;
 }
 
@@ -171,6 +171,9 @@ void CursorController(SCRIPT_CTX * THIS) OLDCALL BANKED {
     int16_t actor_id = *(int16_t*)VM_REF_TO_PTR(EX_FN_ARG18);
     actor_t* actor = actors + (UBYTE)(actor_id);
 
+    // Disable player actor movement
+    PLAYER.dir = 0;
+
     //BYTE cursorIndex = *current_index;
     BYTE currentKeyPressed = CURSOR_BUTTON_PRESSED_NULL;
 
@@ -185,7 +188,7 @@ void CursorController(SCRIPT_CTX * THIS) OLDCALL BANKED {
     // If initial call, set to default states
     // NOTE: To initialize properly, results should be set to 0 before calling this plugin
     if(*results == 0) {
-        ChangeActorState(THIS, actor_id, actor_activated_state_id, CURSOR_ANIM_STATE_ACTIVATED);
+        ChangeActorState(THIS, actor_id, actor_activated_state_id, CURSOR_ANIM_STATE_ACTIVATED, TRUE);
         actor->anim_noloop = TRUE;
         previousButtonPressed = CURSOR_BUTTON_PRESSED_NULL;
         cursorIndex = *current_index;
@@ -274,13 +277,13 @@ void CursorController(SCRIPT_CTX * THIS) OLDCALL BANKED {
 
     if(!is_ignore_buttons_press) {
         if((INPUT_A_PRESSED && !isInputHeld) || (INPUT_A && is_move_while_btn_held && is_enable_continuous_a_btn_held)) {
-            ChangeActorState(THIS, actor_id, actor_selected_active_state_id, CURSOR_ANIM_STATE_SELECTED);
+            ChangeActorState(THIS, actor_id, actor_selected_active_state_id, CURSOR_ANIM_STATE_SELECTED, TRUE);
             actor->anim_noloop = TRUE;
             isInputHeld = TRUE;
             btnHeldCounter = CURSOR_BUTTON_HELD_WAIT_FRAME_AMOUNT;
             *results = CURSOR_BUTTON_PRESSED_A;
         } else if(INPUT_B_PRESSED && !isInputHeld) {
-            ChangeActorState(THIS, actor_id, actor_cancel_state_id, CURSOR_ANIM_STATE_CANCEL);
+            ChangeActorState(THIS, actor_id, actor_cancel_state_id, CURSOR_ANIM_STATE_CANCEL, TRUE);
             actor->anim_noloop = TRUE;
             isInputHeld = TRUE;
             btnHeldCounter = CURSOR_BUTTON_HELD_WAIT_FRAME_AMOUNT;
@@ -738,7 +741,8 @@ void CursorController(SCRIPT_CTX * THIS) OLDCALL BANKED {
     if(prevCursorIndex != cursorIndex) {
         // Play enter state if cursor index has changed
         if(posOffsetX == 0 && posOffsetY == 0 && currentAnimStateID != CURSOR_ANIM_STATE_ENTER) {
-            ChangeActorState(THIS, actor_id, actor_enter_state_id, CURSOR_ANIM_STATE_ENTER);
+            // NOTE: If current state has not changed, then don't reset frames (i.e. if actor_enter_state_id is 0 [default], then don't reset frames)
+            ChangeActorState(THIS, actor_id, actor_enter_state_id, CURSOR_ANIM_STATE_ENTER, actor_enter_state_id);
             actor->anim_noloop = FALSE;
             prevCursorIndex = cursorIndex;
         }
@@ -747,7 +751,8 @@ void CursorController(SCRIPT_CTX * THIS) OLDCALL BANKED {
     // If state is activated or enter state, we only play it once, so now change to default state
     if(currentAnimStateID == CURSOR_ANIM_STATE_ACTIVATED || currentAnimStateID == CURSOR_ANIM_STATE_ENTER) {
         if(actor->frame == actor->animations->end) {
-            ChangeActorState(THIS, actor_id, 0, CURSOR_ANIM_STATE_DEFAULT);
+            // NOTE: If current state has not changed, then don't reset frames (i.e. if actor_enter_state_id is 0 [default], then don't reset frames)
+            ChangeActorState(THIS, actor_id, 0, CURSOR_ANIM_STATE_DEFAULT, actor_enter_state_id);
             actor->anim_noloop = FALSE;
         }
     }
@@ -756,7 +761,7 @@ void CursorController(SCRIPT_CTX * THIS) OLDCALL BANKED {
         // If cancel state was same as default, just return 0 immediately
         if(actor->frame == actor->animations->end || actor_cancel_state_id == 0) {
             actor->hidden = TRUE;
-            ChangeActorState(THIS, actor_id, 0, CURSOR_ANIM_STATE_DEFAULT);
+            ChangeActorState(THIS, actor_id, 0, CURSOR_ANIM_STATE_DEFAULT, TRUE);
             actor->anim_noloop = FALSE;
             *results = CURSOR_BUTTON_PRESSED_B;
             return;
@@ -766,7 +771,7 @@ void CursorController(SCRIPT_CTX * THIS) OLDCALL BANKED {
     else if(currentAnimStateID == CURSOR_ANIM_STATE_SELECTED) {
         // If cancel state was same as default, just return 0 immediately
         if(actor->frame == actor->animations->end || actor_cancel_state_id == 0) {
-            ChangeActorState(THIS, actor_id, actor_selected_loop_state_id, CURSOR_ANIM_STATE_SELECTED_LOOP);
+            ChangeActorState(THIS, actor_id, actor_selected_loop_state_id, CURSOR_ANIM_STATE_SELECTED_LOOP, TRUE);
             actor->anim_noloop = FALSE;
             *results = CURSOR_BUTTON_PRESSED_A;
             return;
