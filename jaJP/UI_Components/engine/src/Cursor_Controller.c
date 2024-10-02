@@ -171,9 +171,6 @@ void CursorController(SCRIPT_CTX * THIS) OLDCALL BANKED {
     int16_t actor_id = *(int16_t*)VM_REF_TO_PTR(EX_FN_ARG18);
     actor_t* actor = actors + (UBYTE)(actor_id);
 
-    // Disable player actor movement
-    PLAYER.dir = 0;
-
     //BYTE cursorIndex = *current_index;
     BYTE currentKeyPressed = CURSOR_BUTTON_PRESSED_NULL;
 
