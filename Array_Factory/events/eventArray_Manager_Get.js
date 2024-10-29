@@ -4,10 +4,12 @@
  *  (i.e. if specified with divider of "2" each divided value can have a 2 bit number value: 0, 1, 2, 3)
  */
 const scriptValueHelpers = require("shared/lib/scriptValue/helpers");
+const l10n = require("../helpers/l10n").default;
+const lang_enUS = (l10n("ACTOR") == "アクター") ? false : true;
 
 export const id = "XV_ARRAY_MANAGER_GET";
-export const name = "Array Manager (Get Value)";
-export const groups = ["XV Plugins"];
+export const name = (lang_enUS) ? "Array Manager (Get Value)" : "配列マネージャー（値の取得）";
+export const groups = (lang_enUS) ? ["XV Plugins"] : ["XV プラグイン"];
 
 const fields = [].concat(
   [
@@ -16,8 +18,8 @@ const fields = [].concat(
       type: "tabs",
       defaultValue: "tabSetupArray",
       values: {
-        tabGetValue: "Get Value",
-        tabSetupArray: "Setup Array",
+        tabGetValue: (lang_enUS) ? "Get Value" : "値の取得",
+        tabSetupArray: (lang_enUS) ? "Setup Array" : "配列のセットアップ",
       },
     },
   ],
@@ -29,7 +31,9 @@ const fields = [].concat(
     conditions: [{key: "array_manager_get_tabs", in: ["tabSetupArray"]}],
     fields: [
       {
-        label: "Obtains a value from the array index of Virtual Global Variable that was set with the Array_Manager_Set plugin.",
+        label: (lang_enUS) ?
+        "Obtains a value from the array index of Virtual Global Variable that was set with the Array_Manager_Set plugin." :
+        "「配列マネージャー（値の代入）」イベントで設定した最大 16 個のグローバル変数のうち、指定したインデックスの値を取得します。[配列インデックス] と [取得した値を保存する変数] 以外のプロパティは「配列マネージャー（値の代入）」イベントで設定したプロパティと同じである必要があります。",
         type: "label",
       },
     ],
@@ -40,16 +44,16 @@ const fields = [].concat(
     fields: [
       {
         key: "var1",
-        label: "Global Variable 1",
-        description: "Global Variable 1",
+        label: (lang_enUS) ? "Global Variable 1" : "グローバル変数 1",
+        description: (lang_enUS) ? "Global Variable 1" : "グローバル変数 1",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
       },
       {
         key: "var2",
-        label: "Global Variable 2",
-        description: "Global Variable 2",
+        label: (lang_enUS) ? "Global Variable 2" : "グローバル変数 2",
+        description: (lang_enUS) ? "Global Variable 2" : "グローバル変数 2",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
@@ -62,16 +66,16 @@ const fields = [].concat(
     fields: [
       {
         key: "var3",
-        label: "Global Variable 3",
-        description: "Global Variable 3",
+        label: (lang_enUS) ? "Global Variable 3" : "グローバル変数 3",
+        description: (lang_enUS) ? "Global Variable 3" : "グローバル変数 3",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
       },
       {
         key: "var4",
-        label: "Global Variable 4",
-        description: "Global Variable 4",
+        label: (lang_enUS) ? "Global Variable 4" : "グローバル変数 4",
+        description: (lang_enUS) ? "Global Variable 4" : "グローバル変数 4",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
@@ -84,16 +88,16 @@ const fields = [].concat(
     fields: [
       {
         key: "var5",
-        label: "Global Variable 5",
-        description: "Global Variable 5",
+        label: (lang_enUS) ? "Global Variable 5" : "グローバル変数 5",
+        description: (lang_enUS) ? "Global Variable 5" : "グローバル変数 5",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
       },
       {
         key: "var6",
-        label: "Global Variable 6",
-        description: "Global Variable 6",
+        label: (lang_enUS) ? "Global Variable 6" : "グローバル変数 6",
+        description: (lang_enUS) ? "Global Variable 6" : "グローバル変数 6",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
@@ -106,16 +110,16 @@ const fields = [].concat(
     fields: [
       {
         key: "var7",
-        label: "Global Variable 7",
-        description: "Global Variable 7",
+        label: (lang_enUS) ? "Global Variable 7" : "グローバル変数 7",
+        description: (lang_enUS) ? "Global Variable 7" : "グローバル変数 7",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
       },
       {
         key: "var8",
-        label: "Global Variable 8",
-        description: "Global Variable 8",
+        label: (lang_enUS) ? "Global Variable 8" : "グローバル変数 8",
+        description: (lang_enUS) ? "Global Variable 8" : "グローバル変数 8",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
@@ -128,16 +132,16 @@ const fields = [].concat(
     fields: [
       {
         key: "var9",
-        label: "Global Variable 9",
-        description: "Global Variable 9",
+        label: (lang_enUS) ? "Global Variable 9" : "グローバル変数 9",
+        description: (lang_enUS) ? "Global Variable 9" : "グローバル変数 9",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
       },
       {
         key: "var10",
-        label: "Global Variable 10",
-        description: "Global Variable 10",
+        label: (lang_enUS) ? "Global Variable 10" : "グローバル変数 10",
+        description: (lang_enUS) ? "Global Variable 10" : "グローバル変数 10",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
@@ -150,16 +154,16 @@ const fields = [].concat(
     fields: [
       {
         key: "var11",
-        label: "Global Variable 11",
-        description: "Global Variable 11",
+        label: (lang_enUS) ? "Global Variable 11" : "グローバル変数 11",
+        description: (lang_enUS) ? "Global Variable 11" : "グローバル変数 11",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
       },
       {
         key: "var12",
-        label: "Global Variable 12",
-        description: "Global Variable 12",
+        label: (lang_enUS) ? "Global Variable 12" : "グローバル変数 12",
+        description: (lang_enUS) ? "Global Variable 12" : "グローバル変数 12",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
@@ -172,16 +176,16 @@ const fields = [].concat(
     fields: [
       {
         key: "var13",
-        label: "Global Variable 13",
-        description: "Global Variable 13",
+        label: (lang_enUS) ? "Global Variable 13" : "グローバル変数 13",
+        description: (lang_enUS) ? "Global Variable 13" : "グローバル変数 13",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
       },
       {
         key: "var14",
-        label: "Global Variable 14",
-        description: "Global Variable 14",
+        label: (lang_enUS) ? "Global Variable 14" : "グローバル変数 14",
+        description: (lang_enUS) ? "Global Variable 14" : "グローバル変数 14",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
@@ -194,16 +198,16 @@ const fields = [].concat(
     fields: [
       {
         key: "var15",
-        label: "Global Variable 15",
-        description: "Global Variable 15",
+        label: (lang_enUS) ? "Global Variable 15" : "グローバル変数 15",
+        description: (lang_enUS) ? "Global Variable 15" : "グローバル変数 15",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
       },
       {
         key: "var16",
-        label: "Global Variable 16",
-        description: "Global Variable 16",
+        label: (lang_enUS) ? "Global Variable 16" : "グローバル変数 16",
+        description: (lang_enUS) ? "Global Variable 16" : "グローバル変数 16",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",
@@ -216,8 +220,10 @@ const fields = [].concat(
     fields: [
       {
         key: "number_of_vars_to_use",
-        label: "Number of Global Variables to Use",
-        description: "From the global variables set, specify the number of global variables to be merged (counting from top).",
+        label: (lang_enUS) ? "Number of Global Variables to Use" : "使用するグローバル変数の数",
+        description: (lang_enUS) ? 
+        "From the global variables set, specify the number of global variables to be merged (counting from top)." :
+        "上記で設定したグローバル変数のうち、使用するグローバル変数の数を指定します（頭から数えます）。",
         type: "select",
         defaultValue: "16",
         options: [
@@ -230,8 +236,10 @@ const fields = [].concat(
       },
       {
         key: "divide_bit_amount",
-        label: "Individual Array Element Bit Size",
-        description: "To use more arrays, you can divide individual global variables with the bit size you want. GB Studio’s global variable has 16 bit size each, so you can divide up the bit size in the range of 1, 2, 4, 8, 16. For example, if 2 bit is specified, each global variables will be divided into 8 segments (having 2 bit worth of storage per segment).",
+        label: (lang_enUS) ? "Individual Array Element Bit Size" : "各配列要素のビットサイズ",
+        description: (lang_enUS) ?
+        "To use more arrays, you can divide individual global variables with the bit size you want. GB Studio’s global variable has 16 bit size each, so you can divide up the bit size in the range of 1, 2, 4, 8, 16. For example, if 2 bit is specified, each global variables will be divided into 8 segments (having 2 bit worth of storage per segment)." :
+        "より多くの配列を扱えるように、1 つのグローバル変数を何ビットで分割するかを指定します（GB Studio の各グローバル変数は 16 ビットのビット数を持ちます）。例えば、「2」を指定すると、各グローバル変数が 8 分割されます（例：1 つのグローバル変数は 16 ビットなので、8 個の 2 ビット値を持つ変数に分割することができます）。「8」を指定すると、2 個の要素（各要素は 8 ビットの値を持つ）に分割されます。",
         type: "select",
         defaultValue: "16",
         options: [
@@ -251,8 +259,10 @@ const fields = [].concat(
         key: "array_index",
         type: "union",
         types: ["number", "variable"],
-        label: "Array Index",
-        description: "Specify the index in the Virtual Global Variable to be manipulated on.",
+        label: (lang_enUS) ? "Array Index" : "配列インデックス",
+        description: (lang_enUS) ?
+        "Specify the index in the Virtual Global Variable to be manipulated on." :
+        "分割されたグローバル変数を 1 つのまとまりとした時に、値を設定したいインデックスを指定します。例えば、16 個のグローバル変数を指定し、それぞれ 1 ビットで分割した場合は、0〜255 の範囲のインデックスを指定することができます。",
         defaultType: "number",
         defaultValue: {
           number: 0,
@@ -261,8 +271,8 @@ const fields = [].concat(
       },
       {
         key: "results",
-        label: "Get Value Storage Variable",
-        description: "The variable to store the obtained value.",
+        label: (lang_enUS) ? "Get Value Storage Variable" : "取得した値を保存する変数",
+        description: (lang_enUS) ? "The variable to store the obtained value." : "指定した配列インデックスの要素の値を格納する変数を指定します。",
         type: "variable",
         defaultValue: "LAST_VARIABLE",
         width: "50%",

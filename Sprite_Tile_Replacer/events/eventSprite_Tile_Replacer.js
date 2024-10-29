@@ -3,17 +3,21 @@
  * Replaces sprite tiles in Color-Only mode
  */
 const scriptValueHelpers = require("shared/lib/scriptValue/helpers");
+const l10n = require("../helpers/l10n").default;
+const lang_enUS = (l10n("ACTOR") == "アクター") ? false : true;
 
 export const id = "XV_SPRITE_TILE_REPLACER";
-export const name = "Sprite Tile Replacer";
-export const groups = ["XV Plugins"];
+export const name = (lang_enUS) ? "Sprite Tile Replacer" : "指定のスプライトタイルを置き換える";
+export const groups = (lang_enUS) ? ["XV Plugins"] : ["XV プラグイン"];
 
 const fields = [].concat(
   [{
     type: "group",
     fields: [
       {
-        label: "Replaces a specified sprite tile with ability to select a VRAM bank in 'Color Only' mode games.",
+        label: (lang_enUS) ? 
+        "Replaces a specified sprite tile with ability to select a VRAM bank in 'Color Only' mode games." :
+        "指定したスプライトタイルを別の背景タイルで置き換えます。「カラーのみ」モードのゲーム専用です。",
         type: "label",
       },
     ],
@@ -24,8 +28,8 @@ const fields = [].concat(
       {
         key: "actor",
         type: "actor",
-        label: "Actor",
-        description: "The actor in which you want to replace the sprite’s tile.",
+        label: (lang_enUS) ? "Actor" : "アクター",
+        description: (lang_enUS) ? "The actor in which you want to replace the sprite’s tile." : "置き換え対象のスプライトを持つアクターを指定します。",
         defaultValue: "$self$",
         width: "70%",
       },
@@ -33,8 +37,8 @@ const fields = [].concat(
         key: "vram_bank",
         type: "union",
         types: ["number", "variable"],
-        label: "VRAM Bank",
-        description: "The bank you want to reference. 0 = Bank 0, 1 = Bank 1.",
+        label: (lang_enUS) ? "VRAM Bank" : "VRAM バンク",
+        description: (lang_enUS) ? "The bank you want to reference. 0 = Bank 0, 1 = Bank 1." : "置き換え元タイルが配置されている VRAM バンク（0 または 1）を指定します。",
         defaultType: "number",
         defaultValue: {
           number: 0,
@@ -49,16 +53,16 @@ const fields = [].concat(
       {
         key: "tileset_bank_tiles",
         type: "text",
-        label: "Tile Bank",
-        description: "The source tile bank reference to use for replacing.",
+        label: (lang_enUS) ? "Tile Bank" : "タイルバンク",
+        description: (lang_enUS) ? "The source tile bank reference to use for replacing." : "背景タイルセットバンクを指定します。",
         defaultValue: "___bank_tileset_number_tiles",
         width: "50%",
       },
       {
         key: "tileset_tiles",
         type: "text",
-        label: "Tileset",
-        description: "The source tileset reference to use for replacing.",
+        label: (lang_enUS) ? "Tileset" : "タイルセット",
+        description: (lang_enUS) ? "The source tileset reference to use for replacing." : "背景タイルセットを指定します。",
         defaultValue: "_tileset_number_tiles",
         width: "50%",
       },
@@ -71,8 +75,8 @@ const fields = [].concat(
         key: "source_tile_idx",
         type: "union",
         types: ["number", "variable"],
-        label: "Background Tile Index",
-        description: "The background tile index in the source tileset to replace with.",
+        label: (lang_enUS) ? "Background Tile Index" : "背景タイルのインデックス",
+        description: (lang_enUS) ? "The background tile index in the source tileset to replace with." : "置き換え元の背景タイルのインデックスを指定します。",
         defaultType: "number",
         defaultValue: {
           number: 0,
@@ -83,8 +87,8 @@ const fields = [].concat(
         key: "target_tile_idx",
         type: "union",
         types: ["number", "variable"],
-        label: "Sprite Tile Index",
-        description: "The sprite’s tile index to be replaced by the background tile.",
+        label: (lang_enUS) ? "Sprite Tile Index" : "スプライトタイルのインデックス",
+        description: (lang_enUS) ? "The sprite’s tile index to be replaced by the background tile." : "置き換え先のスプライトタイルのインデックスを指定します。",
         defaultType: "number",
         defaultValue: {
           number: 0,
