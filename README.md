@@ -1,13 +1,27 @@
 # gb-studio-xv-plugins
 
-Experimental GB Studio 4 plugin collections. See documentation site below for more details.
+`English`
 
-English: https://tomo666.github.io/gamedevlab/
+Experimental GB Studio 4 plugin collections.
 
-実験的な GB Studio 4 のプラグイン集。詳細なドキュメントは下記の日本語サイトを参照。
+These plugins can now be installed directly via Plugin Manager, a new feature introduced in GB Studio 4.2. See documentation site below for more details on how to install and use.
 
-日本語: https://tomo666.github.io/gamedevlab/ja/
 
+Plugin docs: https://tomo666.github.io/gamedevlab/gbs_plugins/intro
+<br/>
+Font docs: https://tomo666.github.io/gamedevlab/gbs_resources/docs/fonts
+
+<hr/>
+
+`Japanese (日本語)`
+
+実験的な GB Studio 4 のプラグイン集。GB Studio 4.2 の新機能である「プラグインマネージャー」から直接インストールすることができるようになりました。詳細なドキュメントは下記の日本語サイトを参照してください。
+
+プラグインのドキュメント: https://tomo666.github.io/gamedevlab/ja/gbs_plugins/intro
+<br/>
+フォントのドキュメント: https://tomo666.github.io/gamedevlab/ja/gbs_resources/docs/fonts
+
+<hr/>
 
 ## Overview
 These are byproducts of the game “XV” I’m currently developing. These plugins provide functionalities that cannot be accomplished or are difficult to implement using just the built-in event components (as of version 4.0.1).
